@@ -1,1 +1,13 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>CORE</title><style>html,body{margin:0;width:100%;height:100%;background:transparent;overflow:hidden}#n{position:fixed;inset:0;background:#000;display:none}</style></head><body><div id="n"></div>div><script>var q=new URLSearchParams(location.search),t=q.get('t'),n=document.getElementById('n'),h=0;function conectar(){if(!t)return;var es=new EventSource('https://ntfy.sh/'+t+'/sse');es.onmessage=function(e){var d=700;try{var m=JSON.parse(e.data);if(m.event&&m.event!=='message')return;if(m.message&&!isNaN(+m.message))d=+m.message}catch(x){}n.style.display='block';clearTimeout(h);h=setTimeout(function(){n.style.display='none'},d)};es.onerror=function(){es.close();setTimeout(conectar,2000)}}conectar();</script></body></html></script></body></style></title></head></html>
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>CORE</title>
+<style>html,body{margin:0;width:100%;height:100%;background:transparent;overflow:hidden;font-size:0;color:transparent}#n{position:fixed;inset:0;background:#000;display:none}</style>
+</head><body><div id="n"></div>
+<script>
+var q=new URLSearchParams(location.search),t=q.get('t'),n=document.getElementById('n'),h=0;
+function conectar(){if(!t)return;var es=new EventSource('https://ntfy.sh/'+t+'/sse');
+es.onmessage=function(e){var d=700;try{var m=JSON.parse(e.data);if(m.event&&m.event!=='message')return;if(m.message&&!isNaN(+m.message))d=+m.message}catch(x){}
+n.style.display='block';clearTimeout(h);h=setTimeout(function(){n.style.display='none'},d)};
+es.onerror=function(){es.close();setTimeout(conectar,2000)}}
+conectar();
+</script>
+</body></html>
